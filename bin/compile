@@ -161,7 +161,7 @@ else
         fi
 
     start "Installing $ver"
-        curl -s $url | tar zxf -
+        curl --insecure -s $url | tar zxf -
     finished
     echo "Downloaded [$url]"
     cd - >/dev/null
