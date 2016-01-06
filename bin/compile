@@ -247,7 +247,7 @@ then
       go install -v "${FLAGS[@]}" $pkgs
     else
       step "Running: godep go install ${FLAGS[@]} $pkgs"
-      godep go install -insecure "${FLAGS[@]}" $pkgs
+      godep go install --insecure "${FLAGS[@]}" $pkgs
     fi
 else
     step "Running: go get ${FLAGS[@]} $pkgs"
