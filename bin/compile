@@ -246,7 +246,7 @@ fi
 #
 ##########################################################################################
 export PATH="$PATH:$HOME/vendor/vips/bin"
-export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:$HOME/vendor/vips/lib/pkgconfig"
+export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:$HOME/vendor/vips/lib/pkgconfig:/app/vendor/vips/lib/pkgconfig"
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$HOME/vendor/vips/lib"
 
 unset GIT_DIR # unset git dir or it will mess with goinstall
