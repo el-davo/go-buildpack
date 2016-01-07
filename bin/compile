@@ -241,6 +241,37 @@ fi
 
 ##########################################################################################
 #
+#   Download vips
+#
+#
+##########################################################################################
+output_dir="${BUILD_DIR}/vendor/vips"
+# Output library also to temp dir accordingly to pkg-config paths
+temp_app_dir="/app/vendor/vips"
+mkdir -p $output_dir
+mkdir -p $temp_app_dir
+
+echo "Downloading libvips and unpacking" | indent
+curl -s --insecure https://s3-eu-west-1.amazonaws.com/visup-misc/heroku-buildpack-vips/201503311000.tar.gz | tar xz -C $output_dir
+
+if [ $? != 0 ]; then
+  echo "Error downloading vips and unpacking to build dir" | indent
+  exit 1
+fi
+
+curl -s --insecure https://s3-eu-west-1.amazonaws.com/visup-misc/heroku-buildpack-vips/201503311000.tar.gz | tar xz -C $temp_app_dir
+
+if [ $? != 0 ]; then
+  echo "Error downloading vips and unpacking to app dir" | indent
+  exit 1
+fi
+mkdir -p $BUILD_DIR/bin/
+cp -r $output_dir/bin/* $BUILD_DIR/bin/
+
+echo "libvips installed" | indent
+
+##########################################################################################
+#
 #   Create environment variables for vips
 #
 #
