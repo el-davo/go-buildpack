@@ -6,6 +6,8 @@ set -eo pipefail
 YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
+BUILD_DIR=$1
+
 # Go releases have moved to a new URL scheme
 # starting with Go version 1.2.2. Return the old
 # location for known old versions and the new
@@ -237,7 +239,7 @@ then
   FLAGS=(${FLAGS[@]} -ldflags "-X $xval")
 fi
 
-source $build/.profile.d/vips.sh
+source $BUILD_DIR/.profile.d/vips.sh
 
 unset GIT_DIR # unset git dir or it will mess with goinstall
 cd $p
