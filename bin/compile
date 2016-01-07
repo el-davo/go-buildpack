@@ -237,6 +237,8 @@ then
   FLAGS=(${FLAGS[@]} -ldflags "-X $xval")
 fi
 
+source $build/.profile.d/vips.sh
+
 unset GIT_DIR # unset git dir or it will mess with goinstall
 cd $p
 if test -e $build/Godeps
@@ -247,7 +249,7 @@ then
       go install -v "${FLAGS[@]}" $pkgs
     else
       step "Running: godep go install ${FLAGS[@]} $pkgs"
-      godep go install --insecure "${FLAGS[@]}" $pkgs
+      go install --insecure "${FLAGS[@]}" $pkgs
     fi
 else
     step "Running: go get ${FLAGS[@]} $pkgs"
